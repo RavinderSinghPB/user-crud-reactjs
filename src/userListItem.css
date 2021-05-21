@@ -1,0 +1,12 @@
+.user-list-item{
+	background-color: blue;
+	width: 75%;
+	margin: 10px auto;
+	height: 90px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 28px;
+	padding-left: 20px;
+	
+}
