@@ -1,0 +1,3 @@
+export const CREATE_NEW_USER = 'CREATE_NEW_USER'
+export const ADD_TO_USER_LIST = 'ADD_TO_USER_LIST'
+export const UPDATE_USER = 'UPDATE_USER'

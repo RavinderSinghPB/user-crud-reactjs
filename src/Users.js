@@ -1,9 +1,12 @@
 import React,{useState,useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import Form from './Form';
+import { addToUserList, createUser, updateUserRedux } from './Redux/actionCreator';
 import './user.css'
 import UserItem from './UserItem';
 function Users() {
 	const [users,setUsers] = useState([])
+	
 	const [selectedUser,setSelectedUser] = useState({})
 	const initialUserDetailsObject = {
 		userName:'',
@@ -12,17 +15,32 @@ function Users() {
 		address:'',
 		city:''
 	};
-	
+
+	// redux
+	const {userDetails} = useSelector(state=>state.userDetails)
+	// console.log(userDetails)asfas
+	const dispatch = useDispatch()
+	const usersRedux = useSelector(state=>state.usersRedux)
+	// console.log(usersRedux)
 	const [isUserItemClicked,setIsUserItemClicked] = useState(false)
 	const [userIdClicked,setUserIdClicked] = useState(null)
 	const [userValues,setUserValues] = useState(initialUserDetailsObject)
 
+	useEffect(() => {
+		console.log(usersRedux)
+		return () => {
+			// cleanup
+		}
+	}, [usersRedux])
 	const [showForm,setShowForm] = useState(false)
 
 	function handleCreateUserClick(e){
 		e.preventDefault()
 		console.log("btn clicked")
 		console.log(userValues)
+		// dispatch(createUser(userValues))
+		dispatch(addToUserList(userValues))
+		console.log(usersRedux)
 		setUsers([...users,userValues])
 		// users.push(userValues)
 		// console.log(users)
@@ -44,11 +62,12 @@ function Users() {
 		e.preventDefault()
 		console.log(userValues)
 		console.log(userIdClicked)
-		let updatedUsers = [...users]
+		let updatedUsers = [...usersRedux]
 		console.log("updatedUsers",updatedUsers)
 		updatedUsers[userIdClicked] = {...updatedUsers[userIdClicked],...userValues}
 		// console.log("updatedUsers[userIdClicked]",updatedUsers[userIdClicked])
-		setUsers(updatedUsers)
+		// setUsers(updatedUsers)
+		dispatch(updateUserRedux(updatedUsers))
 		setUserValues(initialUserDetailsObject)
 		setUserIdClicked(null)
 		setIsUserItemClicked(false)
@@ -65,7 +84,7 @@ function Users() {
 			<div className="left-user-list-container">
 				<div className="user-list">
 					<UserItem 
-						users={users} 
+						users={usersRedux} 
 						setIsUserItemClicked={setIsUserItemClicked} 
 						setUserIdClicked={setUserIdClicked}
 						setSelectedUser={setSelectedUser}
