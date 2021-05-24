@@ -18,7 +18,6 @@ export default function userReducer(state=initialState,{type,payload}){
 		return {
 			...state,
 			userDetails:{...payload},
-			// users:[...users,userDetails]
 		}
 		case ADD_TO_USER_LIST:
 			return {

@@ -17,42 +17,30 @@ function Users() {
 	};
 
 	// redux
-	const {userDetails} = useSelector(state=>state.userDetails)
-	// console.log(userDetails)asfas
 	const dispatch = useDispatch()
+	const {userDetails} = useSelector(state=>state.userDetails)
+	
 	const usersRedux = useSelector(state=>state.usersRedux)
-	// console.log(usersRedux)
 	const [isUserItemClicked,setIsUserItemClicked] = useState(false)
 	const [userIdClicked,setUserIdClicked] = useState(null)
 	const [userValues,setUserValues] = useState(initialUserDetailsObject)
 
-	useEffect(() => {
-		console.log(usersRedux)
-		return () => {
-			// cleanup
-		}
-	}, [usersRedux])
 	const [showForm,setShowForm] = useState(false)
 
 	function handleCreateUserClick(e){
 		e.preventDefault()
-		console.log("btn clicked")
-		console.log(userValues)
+		// console.log("btn clicked")
+		// console.log(userValues)
 		// dispatch(createUser(userValues))
 		dispatch(addToUserList(userValues))
-		console.log(usersRedux)
-		setUsers([...users,userValues])
+		// console.log(usersRedux)
+		// setUsers([...users,userValues])
 		// users.push(userValues)
 		// console.log(users)
 		setUserValues(initialUserDetailsObject)
 	}
 
-	// useEffect(() => {
-	// 	console.log(users)
-	// 	return () => {
-	// 		// cleanup
-	// 	}
-	// }, [users])
+
 	function handleInputChange(e){
 		const {name,value} = e.target;
 		setUserValues({...userValues,[name]:value})
@@ -60,10 +48,10 @@ function Users() {
 
 	function handleUpdateUserClick(e){
 		e.preventDefault()
-		console.log(userValues)
-		console.log(userIdClicked)
+		// console.log(userValues)
+		// console.log(userIdClicked)
 		let updatedUsers = [...usersRedux]
-		console.log("updatedUsers",updatedUsers)
+		// console.log("updatedUsers",updatedUsers)
 		updatedUsers[userIdClicked] = {...updatedUsers[userIdClicked],...userValues}
 		// console.log("updatedUsers[userIdClicked]",updatedUsers[userIdClicked])
 		// setUsers(updatedUsers)
@@ -90,26 +78,12 @@ function Users() {
 						setSelectedUser={setSelectedUser}
 					/>
 				</div>
-				
-					
 				<div className="create-user-btn-div">
-					{/* <button 
-						className="create-user-btn"
-						onClick={handleCreateUserClick}
-					>Create New User</button> */}
 				</div>
 			</div>
 			<div className="right-user-detail-container">
 				<div className="new-user-form">
 
-					{/* <Form 
-						handleInputChange={handleInputChange} 
-						userValues={userValues}
-						handleCreateUserClick={handleCreateUserClick}
-						isUserItemClicked={isUserItemClicked}
-						usedIdClicked={usedIdClicked}
-						
-					/> */}
 					<form className="form">
 						<input 
 							type="text"
