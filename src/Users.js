@@ -65,7 +65,7 @@ function Users() {
 		if(isUserItemClicked){
 			setUserValues(selectedUser)
 		}
-	},[isUserItemClicked])
+	},[selectedUser])
 
 	return (
 		<div className="main-container">
