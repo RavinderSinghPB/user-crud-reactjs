@@ -1,4 +1,4 @@
-import Prac1 from "./practice/listCart";
+import Prac1 from "./practice/listCart1";
 
 function App() {
   
