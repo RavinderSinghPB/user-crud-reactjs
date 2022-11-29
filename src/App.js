@@ -1,11 +1,12 @@
-import './App.css';
-import Users from './Users';
+import Prac1 from "./practice/listCart";
 
 function App() {
+  
+
   return (
-    <div className="App">
-      <Users />
-    </div>
+    <>
+    <Prac1/>
+    </>
   );
 }
 
